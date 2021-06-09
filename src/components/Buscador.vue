@@ -61,7 +61,11 @@
               <img :src="item.flag" :alt="item.name" width="50px" />
             </td>
 
-            <td>{{ item.name != "" ? item.name : "-" }}</td>
+            <td>
+              <div style="max-width:275px;">
+                {{ item.name != "" ? item.name : "-" }}
+              </div>
+            </td>
             <td>{{ item.capital != "" ? item.capital : "-" }}</td>
 
             <td>{{ item.region != "" ? item.region : "-" }}</td>
@@ -81,11 +85,13 @@
             <td>{{ item.population != "" ? item.population : "-" }}</td>
 
             <td>
-              {{
-                item.currencies[0].name != ""
-                  ? item.currencies[0].name + " - " + item.currencies[0].symbol
-                  : "-"
-              }}
+              <div style="max-width:80px; margin:0 auto;">
+                {{
+                  item.currencies[0].name != ""
+                    ? item.currencies[0].name + " - " + item.currencies[0].symbol
+                    : "-"
+                }}
+              </div>
             </td>
             <td v-if="item.borders != '' && borders[index].indice == index">
               <!--
@@ -331,6 +337,7 @@ input {
   border: none;
   height: 75px;
   padding: 0px 0px 0px 25px;
+  margin-left: -18px;
   font-size: 30px;
   border-radius: 40px;
   box-shadow: inset -3px -3px 8px #b1b1b1, 3px 3px 8px #ffffff;
@@ -404,6 +411,10 @@ input {
 }
 
 @media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px) {
+  .input, .btn{
+    width: 90% !important;
+    margin-left: auto !important;
+  }
   table,
   thead,
   tbody,
@@ -438,8 +449,9 @@ input {
     top: 0;
     left: 6px;
     width: 45%;
-    padding-right: 10px;
-    white-space: nowrap;
+    height: 100%;
+    display: flex;
+    align-items: center;
   }
 
   td:nth-of-type(1):before {
